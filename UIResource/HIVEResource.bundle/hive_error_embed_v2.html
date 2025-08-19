@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="format-detection" content="telephone=no" />
+<title> HIVE </title>
+    <style type="text/css">
+    @charset "utf-8";
+
+    /* GCP WD Team. Author : Kwon Sungsoo 2020-10-13. Edit : Kwon Sungsoo 2020-10-15 */
+    html    {-webkit-text-size-adjust:none;-webkit-overflow-scrolling:touch;}
+    body        {line-height:1;background:transparent;}
+    *    {margin:0;padding:0;list-style:none;font-family:helvetica,sans-serif;border:0;box-sizing:border-box;outline:0;}
+    *:lang(ja){font-family:'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ','Meiryo','Osaka','ＭＳ Ｐゴシック','MS PGothic',Arial,sans-serif;}
+    *:lang(zh-hans){font-family:'Times New Roman';}
+    *:lang(zh-hant){font-family:'微軟正黑體', 'Microsoft JhengHei';}
+    *:lang(vi){font-family:'Times New Roman',Palatino,Bodoni,Optima,Century,Garamond,sans-serif;}
+    *:lang(ar) {direction:rtl;}
+
+    .errorCode .message {padding:120px 30px 0;font-size:12px;color:#627793;text-align:center;line-height:20px;}
+    .errorCode .message h3 {margin-bottom:10px;font-weight:500;font-size:18px;color:#2d3137;line-height:26px;}
+    .errorCode .message .btn_retry {min-width:84px;min-height:36px;margin-top:40px;padding:8px 16px;background-color:transparent;border-radius:18px;border:1px solid #edeef6;font-size:12px;color:#636a8c;line-height:16px;}
+    .errorCode .message .btn_retry:before {content:'';display:inline-block;width:11px;height:11px;margin:-2px 7px 0 0;background-repeat:no-repeat;background-size:100% auto;background-position:50% 50%;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAkCAYAAADsHujfAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIqADAAQAAAABAAAAJAAAAACNOlT0AAAE3ElEQVRYCdUXW2hcVXDm7CO7mrY+EoxpLYJYRbBWixBFRBG09UOtL/DHHzcbuy8TliIo4tJW8CObXZLdxVpB8UOiVnyUon74ph+hgl+CtT9WbSqlEU1jN7m7e8eZ29zsOTe7STZZRQ8kZ2bOzJy5c+a1AP+Rha3YEX32wAb73Ln7CWEnEl4NSL1AeCUAVQBwkvHTvH/P+GG1dd2Xrw4MMH3pFU0Pd1UtdcuKDOlPZW+nGrwABPcQUGBp1fOniNOA8HZHEPaVRtK/NJIRI+xZ/BwRS0sa0h/PbiGAl4loVyNFK6TNIkKxM+Dbn88P/eHKOEaU4TPWv1UptVu5B949Ess9SgTfrdEIURtiPemZin1sIDl6gxB0IwSX5buw1f/zxXhqan2G9wK/dbB+okEIFrv9KAJ+w1/7Kbv2GO8/85/ERI/GqYOX2VR7cnvffaeoggfEE+4hyx9Z9DSRRDZDNr3oMhk7wgQL5cIY+HhsLDVtnM0jTw+NbKxa9Ah/xB72xKZGPF6aPI1hiPMcYL/DSgw6f/2kQkwdLKTf8ypphmcyr4d+PTM1yFm0d7kANwxxAlNiAugiQznit2EMPlgoJCcN+gqRaGz4DhvxED/1Fc1EjGB1sqOBEeuDeOdqjXAuDsMPvJ9pZoRL9wsgdcKuminKgXg6xJ7I5ZJll7nV3a0T7I0bl5N10tcpVos4VWotnmjFCLlaSdmWimnYwdnxWmnokEFrAWnVCFHtd3oHgFG2JUVbuNdgjcWKndbs7Fsc9N2cbb8Zh00QQjrvlwbGHqkvLlZSJ+qE1qBSKT7DEve2JsVP43RRTYrxiWbFSmNrO6icVq6r5VKto/8W7J+fJ7T7aFWFS1OwLJhMjnbXApWQy0jB8IzEiMUxslBNiVTjRudKtWEv16wjXDJudVXh3Pks1xHTA4g2T1z/9MJe4wZSZ9kQ5PGuvngKuLaOtR+S9OYkNUYFhfZZxW1WeoG+tkkr1wnthC2wdvArGHOQDXCSuzsdNi8irMzBWkZDU50XU/bDOomHqWq4OzihNnZt/gJk0NUWG7eHI7tDI7UF3P1M/jogekxXRoBfjWVS0yqTedxCIGPg4W65uWxXU7pAO2CrUuNBHJyOX9dH4wI73dcf8O3lvmDVDwWifZFkts+krR6LxLNx1vmQR8OJq7q3vyE0x5BX8kM/cdQWdSb2SgfPru9Hk6PX6PTVwP2J3E42Iu+VRfA9l8ncXRW6Y4gAdkDtZ6+cFHhhEfTUbGsiksjdtUBrERBPENU+8j4Jd/hP9FHDGJIHktmbqjYd5Up7sX4fT2sVVFQIUuilYjExpZ81gyUwJSYaPIeIHF8X9PXpP7gMQ4SjPz6yyyZ6lxUYuS5nzPwnZ9ibgOqDTV3bvnbdKmeynFlE6oSkKGeH1wvCw574nfXcdrCY/lFwdy0yRA6eio3sQLDHuQJucBm9OyucY2MnuWlyZZbfw9h7oWIu/gBN9jgXrge8Rsh5Q0PkIJoYvt4m/JCDdovga10SE50B9YT+HLrOpoYIkxS1cq2a4FB+nr/2Ul2wBfiEZIcemI1klzTEFRgczF3yV4USHDtcnulml95sl7ItFZN5x6VOeGOpkdyKDNEFOSB75lS5T4Hq4ezq4oy63IZaDaSVcxeVBia9Q8q2Lve/gf8GIu7lNsAwOT4AAAAASUVORK5CYII=');vertical-align:middle;}
+    /***** tablet *****/
+    .tablet .errorCode .message {padding:200px 50px 0;font-size:20px;line-height:32px;}
+    .tablet .errorCode .message h3 {margin-bottom:12px;font-size:28px;line-height:40px;}
+    .tablet .errorCode .message .btn_retry {min-width:126px;min-height:54px;margin-top:60px;padding:14px 24px;border-radius:27px;font-size:18px;line-height:24px;}
+    .tablet .errorCode .message .btn_retry:before {width:17px;height:17px;margin:-4px 10px 0 0;}
+    /*************************************** landscape ***************************************/
+    @media (orientation:landscape)    {
+    .errorCode .message {padding:100px 40px 0;font-size:12px;line-height:20px;}
+    .errorCode .message h3 {font-size:18px;line-height:26px;}
+    /***** tablet *****/
+    .tablet .errorCode .message {padding:180px 80px 0;font-size:20px;line-height:32px;}
+    .tablet .errorCode .message h3 {font-size:28px;line-height:40px;}
+    }
+
+    
+    </style>
+</head>
+<script type="text/javascript">
+// 다국어
+var lang_ko = {
+    0: "페이지를 표시할 수 없습니다.",
+    1: "잠시 후 다시 시도해주세요.",
+    2: "재시도",
+};
+var lang_en = {
+    0: "Failed to load the page.",
+    1: "Please try again later.",
+    2: "Retry",
+};
+var lang_ja = {
+    0: "ページを表示できません。",
+    1: "暫くして再度お試しください。",
+    2: "リトライ",
+};
+var lang_ru = {
+    0: "Не удалось запустить страницу.",
+    1: "Пожалуйста, повторите попытку позже.",
+    2: "Заново",
+}
+var lang_fr = {
+    0: "Erreur de chargement de la page.",
+    1: "Réessaie plus tard.",
+    2: "Réessayer",
+}
+var lang_de = {
+    0: "Fehler beim Laden der Seite.",
+    1: "Bitte versuche es später erneut.",
+    2: "Wiederholen",
+}
+var lang_es = {
+    0: "Error al cargar la página.",
+    1: "Por favor inténtelo de nuevo más tarde.",
+    2: "Reintentar",
+}
+var lang_pt = {
+    0: "Erro ao carregar a página.",
+    1: "Por favor tente novamente depois.",
+    2: "Tentar Novamente",
+}
+var lang_id = {
+    0: "Gagal memuat halaman.",
+    1: "Harap coba lagi nanti.",
+    2: "Coba Lagi",
+}
+var lang_ms = {
+    0: "Gagal untuk memuatkan halaman.",
+    1: "Sila cuba semula kemudian.",
+    2: "Cuba Lagi",
+}
+var lang_th = {
+    0: "ไม่สามารถโหลดหน้านี้ได้",
+    1: "กรุณาลองใหม่ภายหลัง",
+    2: "ลองใหม่",
+}
+var lang_vi = {
+    0: "Tải trang thất bại.",
+    1: "Vui lòng thử lại sau.",
+    2: "Thử lại",
+}
+var lang_it = {
+    0: "Non è possibile visualizzare la pagina.",
+    1: "Riprova più tardi.",
+    2: "Riprova",
+}
+var lang_tr = {
+    0: "Sayfa görüntülünemiyor.",
+    1: "Lütfen sonra tekrar dene.",
+    2: "Tekrarla",
+}
+var lang_ar = {
+    0: "أخفق تحميل الصفحة.",
+    1: "الرجاء معاودة المحاولة في وقت لاحق.",
+    2: "إعادة المحاولة",
+}
+var lang_zh_hans = {
+    0: "无法显示页面",
+    1: "请稍后再试",
+    2: "再试一次",
+}
+var lang_zh_hant = {
+    0: "頁面無法顯示",
+    1: "請稍後再次嘗試",
+    2: "再試一次",
+}
+
+
+/**
+* setLanguage
+* use $.lang[currentLanguage][languageNumber]
+*/
+function setLanguage(currentLanguage) {
+//   console.log('setLanguage', arguments);
+  
+  switch( currentLanguage ) {
+      case "ko":
+      lang = lang_ko;
+      break;
+      case "ja":
+      lang = lang_ja;
+      break;
+      case "ru":
+      lang = lang_ru;
+      break;
+      case "fr":
+      lang = lang_fr;
+      break;
+      case "de":
+      lang = lang_de;
+      break;
+      case "es":
+      lang = lang_es;
+      break;
+      case "pt":
+      lang = lang_pt;
+      break;
+      case "id":
+      lang = lang_id;
+      break;
+      case "th":
+      lang = lang_th;
+      break;
+      case "vi":
+      lang = lang_vi;
+      break;
+      case "it":
+      lang = lang_it;
+      break;
+      case "tr":
+      lang = lang_tr;
+      break;
+      case "zh-hans":
+      lang = lang_zh_hans;
+      break;
+      case "zh-hant":
+      lang = lang_zh_hant;
+      break;
+      case "ar":
+      lang = lang_ar;
+      break;
+      case "en":
+      default:
+      lang = lang_en;
+      break;
+  }
+
+  return lang;
+}
+</script>
+<script type="text/javascript">
+function updateLanguage() {
+    var url_string = document.URL;
+    var url = new URL(url_string);
+    // var sp = url.searchParams
+    // console.log(sp);
+    var c = getParameterByName("lang", url);
+    var lang = setLanguage(c);
+    pagenot.innerHTML = lang[0];
+    tryagain.innerHTML = lang[1];
+      retry.innerHTML = lang[2];
+    console.log(c);
+}
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+function onRetry() {
+    window.location = "hivepromotion://retry";
+}
+</script>
+
+<body onload="updateLanguage()">
+<div class="errorCode">
+    <div class="message">
+        <h3 id="pagenot">페이지를 표시할 수 없습니다.</h3>
+        <p id="tryagain">잠시 후 다시 시도해주세요.</p>
+        <button id="retry" type="button" class="btn_retry" onclick="onRetry()">재시도</button>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var tablet, ua = navigator.userAgent,
+            android = ua.match(/Android/);
+
+        if(android){
+            tablet = ua.match(/Mobile|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/);
+        }else{
+            tablet = ua.match(/iP(hone|od)/);
+        }
+
+        if(!tablet) $('html').addClass('tablet');
+    });
+</script>
+</body>
+</html>
