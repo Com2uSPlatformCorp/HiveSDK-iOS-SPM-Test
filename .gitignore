@@ -1,0 +1,7 @@
+## MAC
+.DS_Store
+
+## SPM
+.build
+.swiftpm
+Package.resolved
