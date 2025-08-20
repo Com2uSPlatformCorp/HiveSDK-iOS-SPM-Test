@@ -1,7 +1,7 @@
 // swift-tools-version: 5.10
 import PackageDescription
 
-private let packageVersion = "0.0.4"
+private let packageVersion = "0.1.0"
 
 let package = Package(
     name: "Hive",
@@ -76,10 +76,10 @@ let package = Package(
                 "HiveSDK.swift"
             ]
         ),
-        xcframeworkTarget(name: "HIVECore", checksum: "11312960164f31c400d931783ebb4e6abe94dafd31ec083501fe76d1b20e7d76"),
-        xcframeworkTarget(name: "HIVEProtocol", checksum: "6d333b847948ad9fe180dfe91628f6df8b5e59b9e269746bdf3f8c1332abe84a"),
-        xcframeworkTarget(name: "HIVEUI", checksum: "2c388ff6197009c147d48f71a29878246083fdf546d04a0b9da8d43a1b57dcab"),
-        xcframeworkTarget(name: "HIVEService", checksum: "328f7dc6e4f6ec5df0d6498e6975e5c40596468bfb31eee050b2e7c96ae563f4"),
+        xcframeworkTarget(name: "HIVECore", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b"),
+        xcframeworkTarget(name: "HIVEProtocol", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b"),
+        xcframeworkTarget(name: "HIVEUI", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b"),
+        xcframeworkTarget(name: "HIVEService", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b"),
         bundleTarget(isPrefixUppercased: true, name: "Core"),
         bundleTarget(isPrefixUppercased: true, name: "UI", as: ""),
         bundleTarget(isPrefixUppercased: true, name: "Service"),
@@ -101,7 +101,7 @@ let package = Package(
                 ])
             ]
         ),
-        xcframeworkTarget(name: "HIVE_SDK_Plugin", checksum: "8e89877c0bdee1bb8e2b4658123ae640e0ba89239ce86aedf9c7ff33cb9cd5bc"),
+        xcframeworkTarget(name: "HIVE_SDK_Plugin", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b"),
 // MARK: HIVE_SDK_UnityPlugin
         .target(
             name: "UnityPlugin",
@@ -120,7 +120,7 @@ let package = Package(
                 ])
             ]
         ),
-        xcframeworkTarget(name: "HIVE_SDK_UnityPlugin", checksum: "35b39eb41ea0b8eaf916bc1b621eacb89d644eab95f126a716ab66f2a8f427cf"),
+        xcframeworkTarget(name: "HIVE_SDK_UnityPlugin", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b"),
 // MARK: HivePromotion
         .target(
             name: "Promotion",
@@ -131,7 +131,7 @@ let package = Package(
             ],
             path: "Promotion"
         ),
-        xcframeworkTarget(name: "HivePromotion", checksum: "e76f01f98b286eb9ca90f530697bcef57a420bd55bd17eb926e88b860b55e67c"),
+        xcframeworkTarget(name: "HivePromotion", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b"),
         bundleTarget(name: "Promotion"),
 // MARK: HiveDeviceManagement
         .target(
@@ -143,7 +143,7 @@ let package = Package(
             ],
             path: "DeviceManagement"
         ),
-        xcframeworkTarget(name: "HiveDeviceManagement", checksum: "173803bc271a624feb7f5e8095ddad6e29697773b0b9804541f4d8867d375b0e"),
+        xcframeworkTarget(name: "HiveDeviceManagement", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b"),
         bundleTarget(name: "DeviceManagement"),
 // MARK: HiveAuthV4ProviderGoogle
         .target(
@@ -155,7 +155,7 @@ let package = Package(
             ],
             path: "AuthV4ProviderGoogle"
         ),
-        xcframeworkTarget(name: "ProviderGoogle", checksum: "f2a152da85ccf18e652af933627e877d9f47b67222e994b4f98004311c8ff4cd")
+        xcframeworkTarget(name: "ProviderGoogle", checksum: "d03596efd545fde3df53fbbb2d102dc58c6163a8913a18b432905f5901c7763b")
     ]
 )
 
@@ -165,7 +165,7 @@ private func xcframeworkTarget(
 ) -> Target {
     .binaryTarget(
         name: name,
-        url: "https://github.com/Com2uSPlatformCorp/HiveSDK-iOS-SPM-Test/releases/download/\(packageVersion)/\(name).xcframework.zip",
+        url: "https://github.com/Com2uSPlatformCorp/HiveSDK-iOS-SPM-Test/releases/download/\(packageVersion)/XcFrameworks.zip",
         checksum: checksum
     )
 }
