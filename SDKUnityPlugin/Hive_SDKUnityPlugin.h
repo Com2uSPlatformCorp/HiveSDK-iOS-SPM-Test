@@ -1,5 +1,5 @@
 //
-//  HiveSDKPlugin.h
+//  Hive_SDKUnityPlugin.h
 //  Hive
 //
 //  Created by junely on 8/4/25.

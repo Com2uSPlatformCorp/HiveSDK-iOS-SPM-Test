@@ -1,1 +1,1 @@
-@_exported import HIVEIAPV4Repayment
+@_exported import HiveIAPV4Repayment
