@@ -618,7 +618,7 @@ private func xcframeworkTarget(
     } else {
         return .binaryTarget(
             name: name,
-            url: "https://github.com/Com2uSPlatformCorp/HiveSDK-iOS-SPM-Test/releases/download/\(packageVersion)/\(name).xcframework.zip",
+            url: "https://github.com/Com2uSPlatformCorp/HiveSDK-iOS/releases/download/\(packageVersion)/\(name).xcframework.zip",
             checksum: checksum
         )
     }
