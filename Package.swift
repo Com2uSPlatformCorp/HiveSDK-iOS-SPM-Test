@@ -236,7 +236,7 @@ let package = Package(
         .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework.git", exact: "6.17.2"),                       // AppsFlyer
         .package(url: "https://github.com/singular-labs/Singular-iOS-SDK.git", exact: "12.8.1"),                        // Singular
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "11.15.0"),                             // Firebase
-        .package(url: "https://github.com/ab180/airbridge-ios-sdk-deployment.git", exact: "4.7.0"),                     // AirBridge
+        .package(url: "https://github.com/ab180/airbridge-ios-sdk-deployment.git", exact: "4.7.1"),                     // AirBridge
         .package(url: "https://github.com/facebook/facebook-ios-sdk.git", exact: "18.0.0"),                             // FaceBook
         .package(url: "https://github.com/google/GoogleSignIn-iOS.git", exact: "9.0.0"),                                // Google
         .package(url: "https://github.com/line/line-sdk-ios-swift.git", exact: "5.13.0"),                               // Line
