@@ -1,7 +1,7 @@
 // swift-tools-version: 5.10
 import PackageDescription
 
-private let isDevMode = true
+private let isDevMode = false
 private let packageVersion = "25.8.0-beta2"
 
 let package = Package(
